@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
 
-  base: mode === "production" ? "/Multi-Model/" : "/",
+  base: mode === "production" ? "/Multi-model/" : "/",
 
   server: {
     port: 5173,
@@ -23,13 +23,9 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react")) {
-              return "vendor-react";
-            }
-            if (id.includes("axios")) {
-              return "vendor-axios";
-            }
-            return "vendor"; // fallback
+            if (id.includes("react")) return "vendor-react";
+            if (id.includes("axios")) return "vendor-axios";
+            return "vendor";
           }
         },
       },
