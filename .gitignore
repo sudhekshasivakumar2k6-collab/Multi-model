@@ -1,0 +1,52 @@
+# ── Python ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment secrets – NEVER commit these
+.env
+*.env
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Node / Frontend ──────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# ── OS / IDE ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── AWS / Secrets ────────────────────────────────────────────────────
+*.pem
+*.key
+credentials
+
+# ── Test / Temp files ─────────────────────────────────────────────────
+test_audio.*
+*.webm
+*.tmp
+
+# ── Linting cache ─────────────────────────────────────────────────────
+.flake8
+.ruff_cache/
