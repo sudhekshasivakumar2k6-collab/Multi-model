@@ -1,0 +1,38 @@
+{
+  "name": "Multi-Modal Assistant v2",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.12" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylance",
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "github.copilot"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/backend/.venv/bin/python",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        }
+      }
+    }
+  },
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "8000": { "label": "FastAPI Backend", "onAutoForward": "notify" },
+    "5173": { "label": "React Frontend",  "onAutoForward": "openBrowser" }
+  },
+  "postCreateCommand": "pip install -r backend/requirements.txt && npm ci --prefix frontend && cp backend/.env.example backend/.env || true",
+  "postStartCommand": "echo '\\n\\nRun: npm run dev\\n\\n'"
+}
